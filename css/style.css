@@ -27,6 +27,17 @@ html, body {
     position: relative;
 }
 /*1E1C26*/
+/* IE */
+#ie h1{
+  font-size: 6vh;
+  text-align: center;
+  margin-top: 50vh;
+  transform: translateY(-50%);
+  margin-left: auto;
+  margin-right: auto;
+  font-family: helvetica, futura, arial;
+}
+
 
 /* Scale canvas with resize attribute to full size */
 canvas[resize] {
@@ -105,7 +116,7 @@ canvas[resize] {
   font-size: 6vw;
   letter-spacing: 0.8vw;
   line-height: 7vw;
-  margin: 6vw 0 1vw 0;
+  margin: 16vh 0 3vh 0;
   color: #123D5E;
   animation-timing-function: ease-out;
   animation-timing-function: cubic-bezier(0.42, 0, 1, 1);
@@ -116,22 +127,7 @@ canvas[resize] {
           animation: textSLarge 0.6s;
 }
 
-h1{
-  font-size: 6vh;
-  text-align: center;
-  margin-top: 50vh;
-  transform: translateY(-50%);
-  margin-left: auto;
-  margin-right: auto;
-  font-family: helvetica, futura, arial;
-}
 
-@media only screen and (-webkit-device-pixel-ratio : 3) {
-  #title {
-    font-size: 4em;
-    line-height: 1.5em;
-  }
-}
 
 
 #valeur{
@@ -140,7 +136,9 @@ h1{
   font-size: 1vw;
   text-transform: uppercase;
   letter-spacing: 0.4vw;
-  font-weight: 300;
+  font-weight: 600;
+  max-width: 600px;
+  margin: 0 auto;
     animation-timing-function: ease-out;
   animation-timing-function: cubic-bezier(0.42, 0, 1, 1);
   -webkit-animation: textSThin 0.6s;
@@ -171,7 +169,73 @@ h1{
   margin-bottom: 0vw;
 }
 
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  #title{
+    font-size: 3.5em;
+    line-height: 1.5em;
+  }
+  #valeur{
+    font-size: 1em;
+    padding:0 20px;
+  }
+  #voeux{
+    font-size: 1em;
+  }
+}
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  #title{
+    font-size: 3.5em;
+    line-height: 1.5em;
+  }
+  #valeur{
+    font-size: 1em;
+    padding:0 30px;
+  }
+  #voeux{
+    font-size: 1em;
+  }
+}/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  #title{
+    font-size: 3.5em;
+    line-height: 1.5em;
+  }
+  #valeur{
+    font-size: 1vw;
+    padding:0;
+  }
+  #voeux{
+    font-size: 1.4vw;
+  }
+}
 
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+ #title{
+    font-size: 5vw;
+     line-height: 6vw;
+  }
+  #valeur{
+    font-size: 1vw;
+  }
+  #voeux{
+    font-size: 1.4vw;
+  }
+}/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+  #title{
+    font-size: 5vw;
+     line-height: 6vw;
+  }
+  #valeur{
+    font-size: 1vw;
+  }
+  #voeux{
+    font-size: 1.4vw;
+  }
+}
 
 @keyframes fadein {
     from { opacity: 0; }
