@@ -1,14 +1,44 @@
-paper.install(window);
+function msieversion() {
 
-window.onload = function() {
-    var tool = new paper.Tool();
+    var ua = window.navigator.userAgent;
+    var msie = ua.indexOf("MSIE ");
 
+    if (msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./))  // If Internet Explorer, return version number
+    {
+        //alert(parseInt(ua.substring(msie + 5, ua.indexOf(".", msie))));
+        ieAlert();
+    }
+    else  // If another browser, return 0
+    {
+        //alert('otherbrowser');
+        paperInit();
+    }
+
+    return false;
+}
+
+function ieAlert(){
+    var ie = document.getElementById('ie');
+    ie.className = '';
+}
+
+paperInit();
+
+function paperInit(){
+    paper.install(window);
+
+    window.onload = function() {
+
+        var tool = new paper.Tool();
+    var principale = document.getElementById('principale');
+    principale.className = '';
     // The amount of points in the path:
     var nbPoint = 10;
     var handLeft;
     var handRight;
     var hand;
     var initT;
+    this.isSetCursor;
 
     var canvas = document.getElementById('canvas');
     var canvasWidth, canvasHeight;
@@ -53,7 +83,6 @@ window.onload = function() {
     var gravity = 30.0;
     var mass = 2.0;
     var initPosX = 200;
-
     // bodyMovin
     var containerHandLeft, containerHandRight;
     var animLeft, animRight, animCheck, animNewYear;
@@ -64,6 +93,8 @@ window.onload = function() {
     confettis = new confetti();
     confettis.SetGlobals();
     confettis.InitializeConfetti();
+
+    var _that_ = this;
     
     /*
     #####
@@ -160,11 +191,13 @@ window.onload = function() {
     }
 
     function initCanvas(){
+        this.isSetCursor = false;
         canvasWidth = window.innerWidth;
         canvasHeight = window.innerHeight;
         canvas.width = canvasWidth;
         canvas.height = canvasHeight;
 
+        initPosX = (window.innerWidth/1920)*300;
         nbPoint = parseInt(canvasWidth/150);
 
         view.viewSize = [canvasWidth, canvasHeight];
@@ -300,9 +333,13 @@ window.onload = function() {
     }
 
     function testDrag(){
-        testCroisement(
+        var test1 = testCroisement(
             handLeft[0].point, mouse.pos, 100,
             function(){
+                if(!isSetCursor){
+                    isSetCursor = true;
+                    document.body.style.cursor = 'pointer';
+                }
                 if(mouse.state == 'down'){
                     hand = 'left';
                     origin = originL;
@@ -311,7 +348,7 @@ window.onload = function() {
                 }
             }
         );
-        testCroisement(
+        var test2 = testCroisement(
             handRight[0].point, mouse.pos, 100,
             function(){
                 if(mouse.state == 'down'){
@@ -322,6 +359,18 @@ window.onload = function() {
                 }
             }
         );
+
+        if(test1 || test2){
+            if(!isSetCursor){
+                    document.body.style.cursor = 'pointer';
+                    isSetCursor = true;
+            }
+        }else{
+            if(isSetCursor){
+                    document.body.style.cursor = 'initial';
+                    isSetCursor = false;
+                }
+        }
     }
 
     function testCroisement(pOne, pTwo, precision, functionOn, functionOff){
@@ -469,8 +518,7 @@ window.onload = function() {
         this.radius = 30;
         this.stiffness = 0.2;
         this.damping = 0.7;
-        var _this = this;
-        
+        var _this = this; 
     }
 
     /*
@@ -559,7 +607,7 @@ window.onload = function() {
         animCheck.play();
         if(isInit) confettis.StartConfetti();
         isInit ? isInit = false : confettis.RestartConfetti();
-        
+        document.body.style.cursor = 'initial';
         systemState = 'final';
     }
     function moveHtmlCheckAnim(){
@@ -579,3 +627,6 @@ window.onload = function() {
         }
     }
 }
+
+}
+    

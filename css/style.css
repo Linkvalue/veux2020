@@ -116,11 +116,22 @@ canvas[resize] {
           animation: textSLarge 0.6s;
 }
 
-/*@media only screen and (max-width: 767px) and (-webkit-device-pixel-ratio : 3) {
+h1{
+  font-size: 6vh;
+  text-align: center;
+  margin-top: 50vh;
+  transform: translateY(-50%);
+  margin-left: auto;
+  margin-right: auto;
+  font-family: helvetica, futura, arial;
+}
+
+@media only screen and (-webkit-device-pixel-ratio : 3) {
   #title {
-    font-size: 2000px;
+    font-size: 4em;
+    line-height: 1.5em;
   }
-}*/
+}
 
 
 #valeur{
