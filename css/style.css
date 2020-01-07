@@ -203,6 +203,7 @@ canvas[resize] {
   #title{
     font-size: 2.8em;
     line-height: 1.5em;
+    margin: 8vh 0 2vh 0;
   }
   #valeur{
     font-size: 0.5em;
@@ -218,6 +219,7 @@ canvas[resize] {
   #title{
     font-size: 2.8em;
     line-height: 1.5em;
+    margin: 8vh 0 2vh 0;
   }
   #valeur{
     font-size: 0.5em;
@@ -231,6 +233,7 @@ canvas[resize] {
   #title{
     font-size: 2.8em;
     line-height: 1.5em;
+    margin: 8vh 0 2vh 0;
   }
   #valeur{
     font-size: 0.5em;
