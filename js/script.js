@@ -17,12 +17,11 @@ function msieversion() {
     return false;
 }
 
+msieversion();
 function ieAlert(){
     var ie = document.getElementById('ie');
     ie.className = '';
 }
-
-paperInit();
 
 function paperInit(){
     paper.install(window);
